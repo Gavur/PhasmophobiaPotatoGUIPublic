@@ -353,26 +353,18 @@ namespace PhasmophobiaPotatoGUI
         public override void OnUpdate()
         {
             var kb = Keyboard.current;
-            bool insert = kb.insertKey.wasPressedThisFrame;
-            if (insert)
+            if (kb.insertKey.wasPressedThisFrame)
             {
                 menuEnabled = !menuEnabled;
-                if (!menuEnabled)
-                {
-                    GameObject.FindObjectOfType<Player>();
-                    MyPlayer = GetLocalPlayer();
-                    Cursor.lockState = CursorLockMode.Confined;
-                    Cursor.visible = false;
-                    MyPlayer.field_Public_FirstPersonController_0.enabled = true;
-                    MyPlayer.field_Public_Animator_0.SetFloat("speed", 0f);
-                }
-                if (menuEnabled)
-                {
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
-                    MyPlayer.field_Public_FirstPersonController_0.enabled = false;
-                    MyPlayer.field_Public_Animator_0.SetFloat("speed", 0f);
-                }
+
+                GameObject.FindObjectOfType<Player>();
+                MyPlayer = GetLocalPlayer();
+                Cursor.lockState = CursorLockMode.Confined | CursorLockMode.None;
+                Cursor.visible = !Cursor.visible;
+                MyPlayer.field_Public_FirstPersonController_0.enabled = !MyPlayer.field_Public_FirstPersonController_0.enabled;
+                MyPlayer.field_Public_Animator_0.SetFloat("speed", 0f);
+
+            }
             }
             bool delete = kb.deleteKey.wasPressedThisFrame;
             if (delete)
