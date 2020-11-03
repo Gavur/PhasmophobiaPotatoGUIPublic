@@ -361,8 +361,8 @@ namespace PhasmophobiaPotatoGUI
                 MyPlayer = GetLocalPlayer();
                 Cursor.lockState = CursorLockMode.Confined | CursorLockMode.None;
                 Cursor.visible = !Cursor.visible;
-                MyPlayer.field_Public_FirstPersonController_0.enabled = !MyPlayer.field_Public_FirstPersonController_0.enabled;
-                MyPlayer.field_Public_Animator_0.SetFloat("speed", 0f);
+                myPlayer.field_Public_FirstPersonController_0.enabled = !myPlayer.field_Public_FirstPersonController_0.enabled;
+                myPlayer.field_Public_Animator_0.SetFloat("speed", 0f);
 
             }
             }
@@ -450,7 +450,7 @@ namespace PhasmophobiaPotatoGUI
         private int selecteditem;
         private bool showItemList;
 
-        private Player MyPlayer;
+        public static Player myPlayer;
 
         private void RoomGUI()
         {
